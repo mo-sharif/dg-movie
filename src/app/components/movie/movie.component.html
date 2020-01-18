@@ -1,23 +1,29 @@
-<div class="movie">
+<div class="movie" [@fadeIn]="'in'" *ngIf="movieId$ | async">
   <div class="col">
     <img src="{{ (movieId$ | async)?.Poster }}" />
   </div>
+
   <div class="col content">
     <h2 class="title">{{ movie.Title }}</h2>
+
     <div class="meta-data">
       <div class="col rated">
         {{ (movieId$ | async)?.Rated }}
       </div>
       <div class="col runtime">{{ (movieId$ | async)?.Runtime }}</div>
       <div class="col released">
-        {{ (movieId$ | async)?.Released }}
+        <span>{{ (movieId$ | async)?.Released }}</span>
       </div>
     </div>
+
     <div class="plot">
       {{ (movieId$ | async)?.Plot }}
     </div>
+
     <div class="button">
-      <a href="https://www.imdb.com/title/{{ movie.imdbID }}/">view on IMDB</a>
+      <a href="https://www.imdb.com/title/{{ movie.imdbID }}/" target="_blank"
+        >view on IMDB</a
+      >
     </div>
   </div>
 </div>
