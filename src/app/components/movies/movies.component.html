@@ -1,5 +1,34 @@
-<div *ngIf="movies$ | async">
-  <div class="movies" *ngFor="let movie of movies$ | async">
-    <app-movie [movie]="movie"> </app-movie>
+<div class="filters">
+  <div class="checkbox-button">
+    <label
+      ><input
+        type="checkbox"
+        class="button"
+        [checked]="filterOldMovies"
+        (change)="filterOldMovies = !filterOldMovies"
+      />
+      <span class="left-border"> 1990's</span></label
+    >
+  </div>
+  <div class="checkbox-button">
+    <label>
+      <input
+        type="checkbox"
+        class="button"
+        [checked]="filterNewMovies"
+        (change)="filterNewMovies = !filterNewMovies"
+      /><span class="right-border"> 2000's</span></label
+    >
   </div>
 </div>
+
+<div class="movies" *ngIf="movies$ | async; else loading">
+  <div *ngFor="let movie of movies$ | async">
+    <!-- logic to show and hide movies based on filter selection -->
+    <ng-container *ngIf="filterMovieByYear(movie.Year)">
+      <app-movie class="movie-container" [movie]="movie"> </app-movie>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loading><div class="loading">Loading...</div></ng-template>
