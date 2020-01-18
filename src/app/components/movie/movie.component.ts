@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { IMovie } from "src/app/models/movies";
+import { Movie } from "src/app/models/movies";
+import { MoviesService } from "src/app/services/movies.service";
+import { Observable } from "rxjs";
+import { MovieDetails } from "src/app/models/movie-details";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-movie",
@@ -7,8 +11,19 @@ import { IMovie } from "src/app/models/movies";
   styleUrls: ["./movie.component.sass"]
 })
 export class MovieComponent implements OnInit {
-  @Input() movie: IMovie;
-  constructor() {}
+  @Input() movie: Movie;
+  public movieId$: Observable<MovieDetails>;
 
-  ngOnInit() {}
+  constructor(public moviesService: MoviesService) {}
+
+  ngOnInit() {
+    this.getMovieDetails(this.movie.imdbID);
+  }
+
+  /* Get movie details by imdbID */
+  getMovieDetails = imdbID => {
+    this.movieId$ = this.moviesService
+      .getMovieDetails(imdbID)
+      .pipe(map(res => res));
+  };
 }

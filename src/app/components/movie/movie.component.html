@@ -1,24 +1,23 @@
 <div class="movie">
-    {{movie | json}}
   <div class="col">
-    <img src="" />
+    <img src="{{ (movieId$ | async)?.Poster }}" />
   </div>
-  <div class="col">
-    <h1 class="title"></h1>
-    <div class="col">
-      <!-- PG 13 -->
+  <div class="col content">
+    <h2 class="title">{{ movie.Title }}</h2>
+    <div class="meta-data">
+      <div class="col rated">
+        {{ (movieId$ | async)?.Rated }}
+      </div>
+      <div class="col runtime">{{ (movieId$ | async)?.Runtime }}</div>
+      <div class="col released">
+        {{ (movieId$ | async)?.Released }}
+      </div>
     </div>
-    <div class="col">
-      <!-- 140 min -->
-    </div>
-    <div class="col">
-      <!-- date -->
-    </div>
-    <div class="content">
-      <!-- Body -->
+    <div class="plot">
+      {{ (movieId$ | async)?.Plot }}
     </div>
     <div class="button">
-      <!-- view on IMDB -->
+      <a href="https://www.imdb.com/title/{{ movie.imdbID }}/">view on IMDB</a>
     </div>
   </div>
 </div>
