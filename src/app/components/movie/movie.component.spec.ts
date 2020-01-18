@@ -1,5 +1,4 @@
-import { Movie } from "src/app/models/movies";
-import { Observable, of as observableOf, throwError } from "rxjs";
+import { Observable, of as observableOf } from "rxjs";
 import { MoviesService } from "src/app/services/movies.service";
 import { HttpClientModule } from "@angular/common/http";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
