@@ -1,5 +1,5 @@
 const movieName = "Batman";
-const baseApiUrl = "http://omdbapi.com/?apikey=e9ee62ed";
+const baseApiUrl = "https://omdbapi.com/?apikey=e9ee62ed";
 
 export const environment = {
   production: false,
