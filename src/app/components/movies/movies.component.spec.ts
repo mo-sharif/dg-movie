@@ -1,52 +1,67 @@
-/* tslint:disable:no-unused-variable */
-import { TestBed, ComponentFixture, inject } from '@angular/core/testing';
-import { MoviesComponent } from './movies.component';
-import { MoviesService } from "../../services/movies.service";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Pipe, PipeTransform, Injectable, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Directive, Input, Output } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { Observable, of as observableOf, throwError } from 'rxjs';
 
-class MockMoviesService extends MoviesService {
+import { Component } from '@angular/core';
+import { MoviesComponent } from './movies.component';
+import { MoviesService } from '../../services/movies.service';
+
+@Injectable()
+class MockMoviesService {}
+
+@Directive({ selector: '[oneviewPermitted]' })
+class OneviewPermittedDirective {
+  @Input() oneviewPermitted;
 }
 
-describe('Component: Login', () => {
+@Pipe({name: 'translate'})
+class TranslatePipe implements PipeTransform {
+  transform(value) { return value; }
+}
 
-    let component: MoviesComponent;
-    let fixture: ComponentFixture<MoviesComponent>;
-    let testBedService: MoviesService ;
-    let componentService: MoviesService;
+@Pipe({name: 'phoneNumber'})
+class PhoneNumberPipe implements PipeTransform {
+  transform(value) { return value; }
+}
 
-    beforeEach(() => {
+@Pipe({name: 'safeHtml'})
+class SafeHtmlPipe implements PipeTransform {
+  transform(value) { return value; }
+}
 
-        // refine the test module by declaring the test component
-        TestBed.configureTestingModule({
-            declarations: [MoviesComponent],
-            providers: [MoviesService]
-        });
+describe('MoviesComponent', () => {
+  let fixture;
+  let component;
 
-        // Configure the component with another set of Providers
-        TestBed.overrideComponent(
-            MoviesComponent,
-            { set: { providers: [{ provide: MoviesService, useClass: MockMoviesService }] } }
-        );
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ FormsModule, ReactiveFormsModule ],
+      declarations: [
+        MoviesComponent,
+        TranslatePipe, PhoneNumberPipe, SafeHtmlPipe,
+        OneviewPermittedDirective
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
+      providers: [
+        { provide: MoviesService, useClass: MockMoviesService }
+      ]
+    }).overrideComponent(MoviesComponent, {
 
-        // create component and test fixture
-        fixture = TestBed.createComponent(MoviesComponent);
+    }).compileComponents();
+    fixture = TestBed.createComponent(MoviesComponent);
+    component = fixture.debugElement.componentInstance;
+  });
 
-        // get test component from the fixture
-        component = fixture.componentInstance;
+  afterEach(() => {
+    component.ngOnDestroy = function() {};
+    fixture.destroy();
+  });
 
-        // MoviesService provided to the TestBed
-        testBedService = TestBed.get(MoviesService);
+  it('should run #constructor()', async () => {
+    expect(component).toBeTruthy();
+  });
 
-        // MoviesService provided by Component, (should return MockMoviesService)
-        componentService = fixture.debugElement.injector.get(MoviesService);
-    });
-
-    it('Service injected via inject(...) and TestBed.get(...) should be the same instance',
-        inject([MoviesService], (injectService: MoviesService) => {
-            expect(injectService).toBe(testBedService);
-        })
-    );
-
-    it('Service injected via component should be and instance of MockMoviesService', () => {
-        expect(componentService instanceof MockMoviesService).toBeTruthy();
-    });
 });
