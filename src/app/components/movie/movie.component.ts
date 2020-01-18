@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import fadeIn from "../../animations/fade-in.animation";
+import { fadeIn } from "../../animations/fade-in.animation";
 import { Movie } from "src/app/models/movies";
 import { MoviesService } from "src/app/services/movies.service";
 import { Observable } from "rxjs";
@@ -14,10 +14,12 @@ import { environment } from "../../../environments/environment";
   animations: [fadeIn]
 })
 export class MovieComponent implements OnInit {
+  
   @Input() movie: Movie;
+
   public movieId$: Observable<MovieDetails>;
   public baseImbdUrl: string = environment.baseImbdUrl;
-
+  
   constructor(public moviesService: MoviesService) {}
 
   ngOnInit() {

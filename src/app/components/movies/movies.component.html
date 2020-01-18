@@ -24,7 +24,6 @@
 
 <div class="movies" *ngIf="movies$ | async; else loading">
   <div *ngFor="let movie of movies$ | async">
-    <!-- logic to show and hide movies based on filter selection -->
     <ng-container *ngIf="filterMovieByYear(movie.Year)">
       <app-movie class="movie-container" [movie]="movie"> </app-movie>
     </ng-container>

@@ -25,6 +25,7 @@ export class MoviesComponent implements OnInit {
       .pipe(map(movies => this.sortMoviesByYear(movies.Search)));
   }
 
+  /* Sort movie list by year */
   sortMoviesByYear = movies => {
     return movies.sort((a, b) => {
       if (a.Year < b.Year) {
