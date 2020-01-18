@@ -1,10 +1,17 @@
 // Google Fonts
 @import url(https://fonts.googleapis.com/css?family=Roboto&display=swap)
 
+$layout-breakpoint-small: 500px
+
 // Font Variables
 $roboto: 'Roboto'
 $open-sans: 'Open Sans', sans-serif
 $radius: 0.8em
+$border: 0.1em solid #505050
+$light-border: 0.04em solid #505050
+$shadow: 0 0 51px 0 rgba(0,0,0,.08), 0 6px 18px 0 rgba(0,0,0,.05)
+$hover-shadow: 0 0 114px 0 rgba(0,0,0,.08), 0 30px 25px 0 rgba(0,0,0,.05)
+
 // Styles
 .movie
     display: flex
@@ -13,11 +20,61 @@ $radius: 0.8em
     background: #e8ebee
     padding: 1em
     border-radius: $radius
-    border: 0.1em solid #505050
+    border: $border
+    max-width: 612px
+    box-shadow: $shadow
+    transition: transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)
+    &:hover
+        box-shadow: $hover-shadow
+
+    @media (max-width: $layout-breakpoint-small)
+        flex-direction: column
+        .col img
+            width: 100%
+        .col
+            text-align: center
+            .title
+                text-align: center
+                margin: 1em
+            .button
+                margin: 1em
+                a
+                    float: none
+
     .title
-        margin: 0
+        margin: 0 0 0.2em 0
+        border-bottom: $light-border
+        padding-bottom: 0.2em
     img
         width: 8em
         border-radius: $radius
-    .meta-data 
+
+    .meta-data
         display: flex
+    .content
+        padding-left: 1em
+        padding-right: 1em
+    .button a
+        float: right
+        text-decoration: none
+        color: white
+        background: orange
+        padding: 0.3em 1.4em
+        border-radius: 0.3em
+        font-size: 1.2em
+    .released
+        flex: auto
+        span
+            float: right
+    .rated
+        font-family: monospace
+        font-size: 1em
+        border-radius: 0.4em
+        color: #8e8e8e
+        border: 0.04em solid #8e8e8e
+        padding: 0.2em
+    .runtime
+        font-size: 1em
+        margin-left: 1.6em
+    .plot
+        padding: 1em 0 1em 0
