@@ -5,5 +5,6 @@ export const environment = {
   production: false,
   initialMovie: movieName,
   baseApi: `${baseApiUrl}`,
-  moviesApi: `${baseApiUrl}&s=${movieName}`
+  moviesApi: `${baseApiUrl}&s=${movieName}`,
+  baseImbdUrl: "https://www.imdb.com/title"
 };

@@ -1,7 +1,10 @@
 const movieName = "Batman";
+const baseApiUrl = "http://omdbapi.com/?apikey=e9ee62ed";
 
 export const environment = {
   production: true,
   initialMovie: movieName,
-  moviesApi: `http://omdbapi.com/?s=${movieName}&apikey=e9ee62ed`
+  baseApi: `${baseApiUrl}`,
+  moviesApi: `${baseApiUrl}&s=${movieName}`,
+  baseImbdUrl: "https://www.imdb.com/title"
 };
