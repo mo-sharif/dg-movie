@@ -1,2 +1,50 @@
+$medium-margin:  1.6em
+.loading
+    position: fixed
+    top: 50%
+    left: 50%
+.filters
+    display: flex
+    flex-direction: row-reverse
+    margin: 2em
+    .checkbox-button
+        background-color: #EFEFEF
+        border-radius: 4px
+        border: 1px solid #D0D0D0
+        overflow: auto
+        float: left
+        label
+            float: left
+            width: 7em
+            span
+                text-align: center
+                padding: 0.5em 2em
+                display: block
+                border-radius: 4px
+            input
+                position: absolute
+                top: -20px
+                &:hover + span
+                    background-color: white
+                    cursor: pointer
+                &:checked + span
+                    background-color: #196fab
+                    color: #fff
+                &:checked
+                &:hover + span
+                    background-color: #0075c7
+                    color: white
+    .button
+        font-size: 1em
+        padding: 0.8em 1.4em
+        color: white
+        background: #1872b1
+        border: #505050
+        border-radius: 0.2em
 .movies
-    margin: 20px
+    display: flex
+    flex-direction: column
+    margin: $medium-margin
+    align-items: center
+    .movie-container
+        margin: $medium-margin
