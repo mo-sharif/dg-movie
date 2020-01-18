@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Movie } from "src/app/models/movies";
 import { environment } from "../../../environments/environment";
-import { MovieDetails } from "src/app/models/movie-details";
 
 @Component({
   selector: "app-movies",
