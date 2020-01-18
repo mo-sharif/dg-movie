@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng build - -prod –base-href=” https://mo-sharif.github.io/dg-movie/",
+    "deploy": "ng build --prod --output-path docs --base-href /dg-movie/",
     "e2e": "ng e2e"
   },
   "private": true,
