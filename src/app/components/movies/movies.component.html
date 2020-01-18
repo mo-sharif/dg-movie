@@ -1,0 +1,6 @@
+<h1>movies works!</h1>
+<div *ngIf="movies$ | async">
+  <div *ngFor="let movie of movies$ | async">
+    <app-movie [movie]="movie"></app-movie>
+  </div>
+</div>
