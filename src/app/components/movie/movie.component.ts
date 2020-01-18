@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import fadeIn from "../../animations/fade-in.animation";
 import { Movie } from "src/app/models/movies";
 import { MoviesService } from "src/app/services/movies.service";
 import { Observable } from "rxjs";
@@ -8,7 +9,8 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "app-movie",
   templateUrl: "./movie.component.html",
-  styleUrls: ["./movie.component.sass"]
+  styleUrls: ["./movie.component.sass"],
+  animations: [fadeIn]
 })
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
