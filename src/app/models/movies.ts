@@ -1,4 +1,4 @@
-export interface IMovie {
+export interface Movie {
     Title: string;
     Year: string;
     imdbID: string;
@@ -6,8 +6,8 @@ export interface IMovie {
     Poster: string;
 }
 
-export interface IMovies {
-    Search: IMovie[];
+export interface Movies {
+    Search: Movie[];
     totalResults: string;
     Response: string;
 }
