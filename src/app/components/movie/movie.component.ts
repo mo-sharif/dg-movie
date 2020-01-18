@@ -5,6 +5,7 @@ import { MoviesService } from "src/app/services/movies.service";
 import { Observable } from "rxjs";
 import { MovieDetails } from "src/app/models/movie-details";
 import { map } from "rxjs/operators";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: "app-movie",
@@ -15,6 +16,7 @@ import { map } from "rxjs/operators";
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
   public movieId$: Observable<MovieDetails>;
+  public baseImbdUrl: string = environment.baseImbdUrl;
 
   constructor(public moviesService: MoviesService) {}
 
