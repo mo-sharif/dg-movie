@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,7 +11,9 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MoviesComponent,
+        MovieComponent
       ],
     }).compileComponents();
   }));
@@ -26,10 +30,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('dg-movie');
   });
 
-  it('should render title', () => {
+  it('should render Header title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('dg-movie app is running!');
+    expect(compiled.querySelector('p').textContent).toContain('Header');
   });
 });
