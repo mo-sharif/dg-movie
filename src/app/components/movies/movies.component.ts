@@ -15,8 +15,8 @@ export class MoviesComponent implements OnInit {
 
   public movies$: Observable<Movie[]>;
   public movieName: string = environment.initialMovie;
-  public filterNewMovies: boolean = true;
-  public filterOldMovies: boolean = false;
+  public filterNewMovies: boolean = false;
+  public filterOldMovies: boolean = true;
 
   ngOnInit() {
     /* Get a list of movies */
