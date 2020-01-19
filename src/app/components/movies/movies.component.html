@@ -1,5 +1,7 @@
+<!-- filter section -->
+
 <div class="filters">
-  <div class="checkbox-button">
+  <div class="checkbox-button left-border">
     <label
       ><input
         type="checkbox"
@@ -7,21 +9,22 @@
         [checked]="filterOldMovies"
         (change)="filterOldMovies = !filterOldMovies"
       />
-      <span class="left-border"> 1990's</span></label
+      <span> 1990's</span></label
     >
   </div>
-  <div class="checkbox-button">
+  <div class="checkbox-button right-border">
     <label>
       <input
         type="checkbox"
         class="button"
         [checked]="filterNewMovies"
         (change)="filterNewMovies = !filterNewMovies"
-      /><span class="right-border"> 2000's</span></label
+      /><span> 2000's</span></label
     >
   </div>
 </div>
 
+<!-- Movie list -->
 <div class="movies" *ngIf="movies$ | async; else loading">
   <div *ngFor="let movie of movies$ | async">
     <ng-container *ngIf="filterMovieByYear(movie.Year)">
@@ -30,4 +33,5 @@
   </div>
 </div>
 
+<!-- Loading spinner -->
 <ng-template #loading><div class="loading">Loading...</div></ng-template>

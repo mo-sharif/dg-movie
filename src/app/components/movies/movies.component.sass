@@ -10,15 +10,20 @@ $medium-margin:  1.6em
     top: 50%
     left: 50%
 .filters
+    font-family: $roboto
     display: flex
     flex-direction: row-reverse
     margin: 2em
     .checkbox-button
-        background-color: #EFEFEF
-        border-radius: 4px
-        border: 1px solid #D0D0D0
+        background-color: #e8ebee
         overflow: auto
         float: left
+        &.left-border
+            border-radius: 0px 0.3em 0.3em 0
+            border: 1px solid #d4d4d4
+        &.right-border
+            border-radius: 0.3em 0 0 0.3em
+            border: 1px solid #d4d4d4
         label
             float: left
             width: 7em
@@ -26,7 +31,6 @@ $medium-margin:  1.6em
                 text-align: center
                 padding: 0.5em 2em
                 display: block
-                border-radius: 4px
             input
                 position: absolute
                 top: -20px
@@ -35,10 +39,10 @@ $medium-margin:  1.6em
                     background-color: white
                     cursor: pointer
                 &:checked + span
-                    background-color: #196fab
-                    color: #fff
-                &:checked &:hover + span
                     background-color: #0075c7
+                    color: #fff
+                &:hover + span
+                    background-color: #196fab
                     color: white
     .button
         font-size: 1em
