@@ -17,7 +17,7 @@ export class MovieComponent implements OnInit {
   
   @Input() movie: Movie;
 
-  public movieId$: Observable<MovieDetails>;
+  public movieDetails$: Observable<MovieDetails>;
   public baseImbdUrl: string = environment.baseImbdUrl;
   
   constructor(public moviesService: MoviesService) {}
@@ -28,7 +28,7 @@ export class MovieComponent implements OnInit {
 
   /* Get movie details by imdbID */
   getMovieDetails = imdbID => {
-    this.movieId$ = this.moviesService
+    this.movieDetails$ = this.moviesService
       .getMovieDetails(imdbID)
       .pipe(map(res => res));
   };
