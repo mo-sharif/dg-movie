@@ -1,6 +1,6 @@
-<div class="movie" [@fadeIn]="'in'" *ngIf="movieId$ | async">
+<div class="movie" [@fadeIn]="'in'" *ngIf="movieDetails$ | async">
   <div class="col">
-    <img src="{{ (movieId$ | async)?.Poster }}" />
+    <img src="{{ (movieDetails$ | async)?.Poster }}" />
   </div>
 
   <div class="col content">
@@ -8,16 +8,16 @@
 
     <div class="meta-data">
       <div class="col rated">
-        {{ (movieId$ | async)?.Rated }}
+        {{ (movieDetails$ | async)?.Rated }}
       </div>
-      <div class="col runtime">{{ (movieId$ | async)?.Runtime }}</div>
+      <div class="col runtime">{{ (movieDetails$ | async)?.Runtime }}</div>
       <div class="col released">
-        <span>{{ (movieId$ | async)?.Released }}</span>
+        <span>{{ (movieDetails$ | async)?.Released }}</span>
       </div>
     </div>
 
     <div class="plot">
-      {{ (movieId$ | async)?.Plot }}
+      {{ (movieDetails$ | async)?.Plot }}
     </div>
 
     <div class="button">
